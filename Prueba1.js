@@ -103,7 +103,28 @@ exitButton.style.fontSize = '18px';
 exitButton.style.display = 'none';
 document.body.appendChild(exitButton);
 
-// --------------------------- OVERLAY PARA PORFOLIO ---------------------------
+// --------------------------- OVERLAY PARA PRESENTACIÓN --------------------------- 
+const overlay2 = document.createElement('div');
+overlay2.style.position = 'fixed';
+overlay2.style.top = 0;
+overlay2.style.left = 0;
+overlay2.style.width = '100%';
+overlay2.style.height = '100%';
+overlay2.style.display = 'none';
+overlay2.style.justifyContent = 'center';
+overlay2.style.alignItems = 'center';
+overlay2.style.zIndex = 100;
+document.body.appendChild(overlay2);
+
+const presentacionImage = document.createElement('img');
+presentacionImage.src = 'TextoLona1.png'; // tu imagen
+presentacionImage.style.maxWidth = '55%';
+presentacionImage.style.maxHeight = '55%';
+overlay2.appendChild(presentacionImage);
+
+overlay2.addEventListener('click', () => {overlay2.style.display = 'none';});
+
+// --------------------------- OVERLAY PARA PORTAFOLIO ---------------------------
 const overlay = document.createElement('div');
 overlay.style.position = 'fixed';
 overlay.style.top = 0;
@@ -117,13 +138,12 @@ overlay.style.zIndex = 100;
 document.body.appendChild(overlay);
 
 const portfolioImage = document.createElement('img');
-portfolioImage.src = 'TextoLona1.png'; // tu imagen
-portfolioImage.style.maxWidth = '55%';
-portfolioImage.style.maxHeight = '55%';
+portfolioImage.src = 'Portafolios.png'; // tu imagen
+portfolioImage.style.maxWidth = '45%';
+portfolioImage.style.maxHeight = '45%';
 overlay.appendChild(portfolioImage);
 
-// cerrar overlay al hacer click
-overlay.addEventListener('click', () => { overlay.style.display = 'none'; });
+overlay.addEventListener('click', () => {overlay.style.display = 'none';});
 
 // --------------------------- VARIABLES CÁMARA --------------------------
 
@@ -131,6 +151,7 @@ let targetPosition = null;
 let targetLookAt = null;
 let activeSpot = null;
 let showPortfolioOnFocus = false;
+let showPresentationOnFocus = false;
 
 // --------------------------- CLICK SOBRE OBJETO ---------------------------
 renderer.domElement.addEventListener('click', (event) => {
@@ -179,10 +200,12 @@ renderer.domElement.addEventListener('click', (event) => {
     controls.enabled = false;
     exitButton.style.display = 'block';
 
-    // si es Porfolio, marcar para mostrar overlay al llegar
-    showPortfolioOnFocus = (obj.name === "Lona1");
+    // si es Presentación, marcar para mostrar overlay al llegar
+    showPortfolioOnFocus = (obj.name === "Lona2");
+    showPresentationOnFocus = (obj.name === "Lona1");
   }
 });
+
 
 // --------------------------- BOTÓN X ---------------------------
 exitButton.addEventListener('click', () => {
@@ -199,7 +222,7 @@ exitButton.addEventListener('click', () => {
   controls.enabled = true;
   controls.update();
 
-  ambientLight.intensity = 0.6;
+  ambientLight.intensity = 0.8;
 
   if (activeSpot) {
     activeSpot.visible = false;
@@ -207,6 +230,7 @@ exitButton.addEventListener('click', () => {
   }
 
   overlay.style.display = 'none';
+  overlay2.style.display = 'none';
 });
 
 // --------------------------- LOOP ---------------------------
@@ -225,6 +249,11 @@ function animate() {
       if (showPortfolioOnFocus) {
         overlay.style.display = "flex";
         showPortfolioOnFocus = false;
+      }
+      // mostrar overlay si corresponde
+      if (showPresentationOnFocus) {
+        overlay2.style.display = "flex";
+        showPresentationOnFocus = false;
       }
     }
   }
