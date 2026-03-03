@@ -117,9 +117,9 @@ overlay.style.zIndex = 100;
 document.body.appendChild(overlay);
 
 const portfolioImage = document.createElement('img');
-portfolioImage.src = 'models/Willy.jpg'; // tu imagen
-portfolioImage.style.maxWidth = '50%';
-portfolioImage.style.maxHeight = '50%';
+portfolioImage.src = 'TextoLona1.png'; // tu imagen
+portfolioImage.style.maxWidth = '55%';
+portfolioImage.style.maxHeight = '55%';
 overlay.appendChild(portfolioImage);
 
 // cerrar overlay al hacer click
