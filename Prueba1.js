@@ -92,19 +92,6 @@ loader.load(
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
-// --------------------------- DIV INFO ---------------------------
-const infoDiv = document.createElement('div');
-infoDiv.style.position = 'absolute';
-infoDiv.style.top = '20px';
-infoDiv.style.right = '20px';
-infoDiv.style.padding = '10px';
-infoDiv.style.backgroundColor = 'rgba(0,0,0,0.7)';
-infoDiv.style.color = 'white';
-infoDiv.style.fontFamily = 'Arial';
-infoDiv.style.display = 'none';
-infoDiv.style.zIndex = '10';
-document.body.appendChild(infoDiv);
-
 // --------------------------- BOTÓN X ---------------------------
 const exitButton = document.createElement('button');
 exitButton.innerText = 'X';
